@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from collections import Counter
@@ -83,47 +82,6 @@ def predict_language(text):
             best_lang = lang
 
     return best_lang
-
-
-# --- ТЕСТИРОВАНИЕ ---
-# print("\n--- Проверка 'ручного' алгоритма ---")
-# test_sentences = [
-#     "This is a custom written algorithm from scratch.",  # EN
-#     "Мы написали классификатор абсолютно сами, без библиотек.",  # RU
-#     "Me gusta programar en Python.",  # ES
-#     "To je velmi zajímavý projekt.",  # CS
-#     "Annonce à toutes les personnes actuellement au premier étage de l'école",
-# ]
-#
-# for sentence in test_sentences:
-#     prediction = predict_language(sentence)
-#     print(f"[{prediction.upper()}] : {sentence}")
-
-# bd = pd.read_csv("wikipedia_dataset_2_0.csv")
-# x = bd["text"]
-# y = bd["language"]
-# langs_keys = {lang: x for x, lang in enumerate(sorted(y.unique()))}
-# # print(langs_keys)
-# confusion_matrix = np.zeros((12, 12), dtype=int)
-# for i in range(len(bd)):
-#     predict_lang = predict_language(x[i])
-#     curr_lang = y[i]
-#     if predict_lang == curr_lang:
-#         confusion_matrix[langs_keys[curr_lang]][langs_keys[curr_lang]] += 1
-#     else:
-#         confusion_matrix[langs_keys[curr_lang]][langs_keys[predict_lang]] += 1
-#
-# print(confusion_matrix)
-#
-# labels = sorted(y.unique())
-# # print(labels)
-# plt.figure(figsize=(10, 8))
-# sns.heatmap(confusion_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=labels, yticklabels=labels)
-# plt.title('Матрица ошибок детекции языка (n-grams)', fontsize=16)
-# plt.xlabel('Предсказанный язык', fontsize=12)
-# plt.ylabel('Истинный язык', fontsize=12)
-#
-# plt.show()
 
 # Еще один датасет для оценки погрешности
 bd = pd.read_csv("wikipedia_dataset_2_0.csv")
